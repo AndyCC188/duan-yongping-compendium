@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鐭ヨ瘑鍥捐氨 - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html">棣栭〉</a></li>
+      <li><a href="concepts.html">姒傚康</a></li>
+      <li><a href="timeline.html">鏃堕棿绾?/a></li>
+      <li><a href="graph.html" class="active">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">鐭ヨ瘑鍥捐氨</h2>
+      <p class="section-desc">鎷栨嫿銆佺缉鏀炬帰绱㈡蹇典箣闂寸殑鍏宠仈 | 鐐瑰嚮鑺傜偣鏌ョ湅璇︽儏</p>
+      <div class="graph-container" id="graphWrapper">
+        <svg id="knowledge-graph" viewBox="0 0 900 650" style="width:100%;height:100%;">
+          <g id="graphGroup">
+            <line x1="450" y1="80" x2="200" y2="200" stroke="#d0ccc0" stroke-width="1.5"/>
+            <line x1="450" y1="80" x2="450" y2="200" stroke="#d0ccc0" stroke-width="1.5"/>
+            <line x1="450" y1="80" x2="700" y2="200" stroke="#d0ccc0" stroke-width="1.5"/>
+            <line x1="450" y1="80" x2="300" y2="300" stroke="#d0ccc0" stroke-width="1.5"/>
+            <line x1="450" y1="80" x2="600" y2="300" stroke="#d0ccc0" stroke-width="1.5"/>
+            <line x1="200" y1="200" x2="450" y2="200" stroke="#d0ccc0" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="450" y1="200" x2="700" y2="200" stroke="#d0ccc0" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="200" y1="200" x2="300" y2="300" stroke="#d0ccc0" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="450" y1="200" x2="300" y2="300" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="450" y1="200" x2="600" y2="300" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="700" y1="200" x2="600" y2="300" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="300" y1="300" x2="150" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="300" y1="300" x2="400" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="450" y1="80" x2="400" y2="430" stroke="#d0ccc0" stroke-width="1" stroke-dasharray="4,4"/>
+            <line x1="600" y1="300" x2="500" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="600" y1="300" x2="700" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="150" y1="430" x2="400" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="400" y1="430" x2="500" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="500" y1="430" x2="700" y2="430" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="150" y1="430" x2="100" y2="560" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="400" y1="430" x2="280" y2="560" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="500" y1="430" x2="450" y2="560" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="500" y1="430" x2="620" y2="560" stroke="#d0ccc0" stroke-width="1"/>
+            <line x1="700" y1="430" x2="800" y2="560" stroke="#d0ccc0" stroke-width="1"/>
+            <g class="graph-node" data-id="right-business" style="cursor:pointer;"><circle cx="450" cy="80" r="35" fill="#1a365d" opacity="0.9"/><text x="450" y="75" text-anchor="middle" fill="#fff" font-size="12" font-family="PingFang SC,Microsoft YaHei,sans-serif">涔拌偂绁?/text><text x="450" y="90" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10">涔板叕鍙?/text></g>
+            <g class="graph-node" data-id="margin-of-safety" style="cursor:pointer;"><circle cx="200" cy="200" r="30" fill="#d4a853" opacity="0.9"/><text x="200" y="196" text-anchor="middle" fill="#1a365d" font-size="11" font-weight="bold">瀹夊叏杈归檯</text></g>
+            <g class="graph-node" data-id="circle-of-competence" style="cursor:pointer;"><circle cx="450" cy="200" r="30" fill="#d4a853" opacity="0.9"/><text x="450" y="196" text-anchor="middle" fill="#1a365d" font-size="11" font-weight="bold">鑳藉姏鍦?/text></g>
+            <g class="graph-node" data-id="long-term" style="cursor:pointer;"><circle cx="700" cy="200" r="30" fill="#d4a853" opacity="0.9"/><text x="700" y="196" text-anchor="middle" fill="#1a365d" font-size="11" font-weight="bold">闀挎湡鎸佹湁</text></g>
+            <g class="graph-node" data-id="valuation" style="cursor:pointer;"><circle cx="300" cy="300" r="28" fill="#2a4a7f" opacity="0.85"/><text x="300" y="296" text-anchor="middle" fill="#fff" font-size="11">鐜伴噾娴佹姌鐜?/text></g>
+            <g class="graph-node" data-id="compounding" style="cursor:pointer;"><circle cx="450" cy="300" r="28" fill="#2a4a7f" opacity="0.85"/><text x="450" y="296" text-anchor="middle" fill="#fff" font-size="11">澶嶅埄</text></g>
+            <g class="graph-node" data-id="concentration" style="cursor:pointer;"><circle cx="600" cy="300" r="28" fill="#2a4a7f" opacity="0.85"/><text x="600" y="296" text-anchor="middle" fill="#fff" font-size="11">闆嗕腑鎶曡祫</text></g>
+            <g class="graph-node" data-id="moat" style="cursor:pointer;"><circle cx="150" cy="430" r="25" fill="#b8912e" opacity="0.85"/><text x="150" y="426" text-anchor="middle" fill="#fff" font-size="10">鎶ゅ煄娌?/text></g>
+            <g class="graph-node" data-id="management" style="cursor:pointer;"><circle cx="400" cy="430" r="25" fill="#b8912e" opacity="0.85"/><text x="400" y="426" text-anchor="middle" fill="#fff" font-size="10">浼佷笟鏂囧寲</text></g>
+            <g class="graph-node" data-id="stop-doing" style="cursor:pointer;"><circle cx="500" cy="430" r="25" fill="#b8912e" opacity="0.85"/><text x="500" y="426" text-anchor="middle" fill="#fff" font-size="10">涓嶄负娓呭崟</text></g>
+            <g class="graph-node" data-id="right-thing" style="cursor:pointer;"><circle cx="700" cy="430" r="25" fill="#b8912e" opacity="0.85"/><text x="700" y="426" text-anchor="middle" fill="#fff" font-size="10">鍋氬鐨勪簨</text></g>
+            <g class="graph-node" data-id="honesty" style="cursor:pointer;"><circle cx="100" cy="560" r="22" fill="#2a4a7f" opacity="0.8"/><text x="100" y="557" text-anchor="middle" fill="#fff" font-size="10">鏈垎</text></g>
+            <g class="graph-node" data-id="life-philosophy" style="cursor:pointer;"><circle cx="280" cy="560" r="22" fill="#2a4a7f" opacity="0.8"/><text x="280" y="557" text-anchor="middle" fill="#fff" font-size="10">骞冲父蹇?/text></g>
+            <g class="graph-node" data-id="happiness" style="cursor:pointer;"><circle cx="450" cy="560" r="22" fill="#2a4a7f" opacity="0.8"/><text x="450" y="557" text-anchor="middle" fill="#fff" font-size="10">蹇箰鎶曡祫</text></g>
+            <g class="graph-node" data-id="giving-back" style="cursor:pointer;"><circle cx="620" cy="560" r="22" fill="#2a4a7f" opacity="0.8"/><text x="620" y="557" text-anchor="middle" fill="#fff" font-size="10">鎱堝杽鍥為</text></g>
+            <g class="graph-node" data-id="happiness" style="cursor:pointer;"><circle cx="800" cy="560" r="20" fill="#e8c97a" opacity="0.7"/><text x="800" y="557" text-anchor="middle" fill="#1a365d" font-size="9">鐢熸椿</text></g>
+          </g>
+        </svg>
+      </div>
+      <p class="text-center" style="margin-top:16px;color:var(--text-muted);font-size:13px;">鎷栨嫿骞崇Щ 路 婊氳疆缂╂斁 路 鐐瑰嚮鑺傜偣鏌ョ湅璇︽儏</p>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script src="js/graph.js"></script>
+</body>
+</html>
