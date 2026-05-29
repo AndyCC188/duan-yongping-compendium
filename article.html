@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鏂囩珷璇︽儏 - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html">棣栭〉</a></li>
+      <li><a href="concepts.html">姒傚康</a></li>
+      <li><a href="timeline.html">鏃堕棿绾?/a></li>
+      <li><a href="graph.html">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="article-content" id="articleDetail">
+        <p style="text-align:center;color:var(--text-muted);padding:60px 0;">鍔犺浇涓?..</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var params = new URLSearchParams(window.location.search);
+  var articleId = params.get("id");
+  var container = document.getElementById("articleDetail");
+  if (!articleId || typeof ARTICLES === "undefined") {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:60px 0;">鏈壘鍒拌鏂囩珷銆?/p>';
+    return;
+  }
+  var article = ARTICLES.find(function(a) { return a.id === articleId; });
+  if (!article) {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:60px 0;">鏈壘鍒拌鏂囩珷銆?/p>';
+    return;
+  }
+  document.title = article.title + " - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?;
+  container.innerHTML = '<div class="breadcrumb"><a href="index.html">棣栭〉</a> / <a href="articles.html">鏂囩珷</a> / ' + article.title + '</div><h1 style="font-family:var(--font-serif);font-size:28px;color:var(--primary);">' + article.title + '</h1><div class="meta">' + article.date + ' 路 ' + article.author + '</div><div style="margin-bottom:24px;">' + article.tags.map(function(t) { return '<span class="category-tag">' + t + '</span>'; }).join(" ") + '</div><div style="background:var(--bg-dark);padding:24px;border-radius:var(--radius-lg);margin-bottom:24px;font-size:16px;line-height:1.8;"><p>' + article.summary + '</p></div><div style="background:var(--bg-card);padding:32px;border-radius:var(--radius-lg);box-shadow:var(--shadow);text-align:center;color:var(--text-muted);"><p style="font-size:18px;margin-bottom:12px;">馃摑</p><p>鏂囩珷璇︾粏鍐呭姝ｅ湪鎾板啓涓紝鏁鏈熷緟銆?/p><p style="font-size:13px;margin-top:8px;">鎴戜滑姝ｅ湪鍩轰簬娈垫案骞崇殑鍏紑婕旇銆侀洩鐞冨彂瑷€銆佸獟浣撴姤閬撶瓑璧勬枡鎾板啓娣卞害鏂囩珷銆?/p></div>';
+});
+</script>
+</body>
+</html>
