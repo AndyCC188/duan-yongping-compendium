@@ -1,0 +1,446 @@
+/* === 娈垫案骞充环鍊兼姇璧勬€濇兂搴?- 鍏ㄥ眬鏍峰紡 === */
+
+:root {
+  --primary: #1a365d;
+  --primary-light: #2a4a7f;
+  --primary-dark: #0f2240;
+  --accent: #d4a853;
+  --accent-light: #e8c97a;
+  --accent-dark: #b8912e;
+  --bg: #f8f6f0;
+  --bg-card: #ffffff;
+  --bg-dark: #f0ede6;
+  --text: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --border: #e0dcd0;
+  --border-light: #eee9de;
+  --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.1);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --max-width: 1200px;
+  --font-sans: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  --font-serif: "Noto Serif SC", "SimSun", "STSong", "Songti SC", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--accent-dark); }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+/* === 瀵艰埅鏍?=== */
+.navbar {
+  background: var(--primary);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-brand {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-light);
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent-light); }
+.nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+
+/* === Hero === */
+.hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.hero .subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.8);
+  max-width: 650px;
+  margin: 0 auto 32px;
+}
+.hero .accent { color: var(--accent-light); }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* === 鎸夐挳 === */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-align: center;
+}
+.btn-primary { background: var(--accent); color: var(--primary-dark); }
+.btn-primary:hover { background: var(--accent-light); }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.btn-sm { padding: 8px 18px; font-size: 13px; }
+
+/* === 缁熻闈㈡澘 === */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 24px 0;
+  margin: -28px 24px 0;
+  position: relative;
+  z-index: 2;
+}
+.stat-item {
+  background: var(--bg-card);
+  padding: 20px 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-align: center;
+  min-width: 120px;
+}
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary);
+}
+.stat-label { font-size: 13px; color: var(--text-light); margin-top: 4px; }
+
+/* === 绔犺妭 === */
+.section { padding: 60px 0; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-desc {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+/* === 鍒嗙被瀵艰埅 === */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.category-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+.category-icon { font-size: 36px; margin-bottom: 12px; }
+.category-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.category-count { font-size: 13px; color: var(--text-muted); }
+
+/* === 姒傚康鍗＄墖 === */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.concept-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.concept-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.concept-card h3 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.concept-card p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.concept-card .category-tag {
+  display: inline-block;
+  background: var(--bg-dark);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 12px;
+}
+
+/* === 绛涢€夋爮 === */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* === 鎼滅储妗?=== */
+.search-box {
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+.search-box input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: var(--bg-card);
+}
+.search-box input:focus { border-color: var(--accent); }
+
+/* === 寮曠敤鍗＄墖 === */
+.quote-card {
+  background: var(--bg-card);
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  margin: 16px 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow);
+}
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.quote-source {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* === 鏃堕棿绾?=== */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item { position: relative; margin-bottom: 32px; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.timeline-year {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.timeline-content { font-size: 14px; color: var(--text-light); }
+
+/* === 鐭ヨ瘑鍥捐氨 === */
+.graph-container {
+  width: 100%;
+  min-height: 550px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+.graph-container svg { width: 100%; height: 100%; }
+.graph-tooltip {
+  position: absolute;
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  pointer-events: none;
+  display: none;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+/* === 鏂囩珷鍒楄〃 === */
+.article-list { max-width: 800px; margin: 0 auto; }
+.article-item {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  transition: transform 0.2s;
+}
+.article-item:hover { transform: translateX(4px); }
+.article-item h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.article-item .meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.article-item p {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* === 鏂囩珷璇︽儏 === */
+.article-content { max-width: 750px; margin: 0 auto; }
+.article-content h2 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--primary);
+  margin: 32px 0 12px;
+}
+.article-content h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--primary);
+  margin: 24px 0 8px;
+}
+.article-content p {
+  margin-bottom: 14px;
+  line-height: 1.85;
+}
+.article-content .meta {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+/* === 椤佃剼 === */
+.footer {
+  background: var(--primary-dark);
+  color: rgba(255,255,255,0.7);
+  padding: 40px 0;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 60px;
+}
+.footer a { color: var(--accent-light); }
+
+/* === 闈㈠寘灞?=== */
+.breadcrumb {
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.breadcrumb a { color: var(--text-light); }
+.breadcrumb a:hover { color: var(--primary); }
+
+/* === 宸ュ叿绫?=== */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.p-40 { padding: 40px; }
+
+/* === 鍝嶅簲寮?=== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    padding: 16px 24px;
+    gap: 12px;
+  }
+  .hero h1 { font-size: 26px; }
+  .hero { padding: 50px 0 40px; }
+  .category-grid,
+  .concept-grid { grid-template-columns: 1fr; }
+  .stats-bar { flex-wrap: wrap; gap: 12px; }
+  .stat-item { min-width: 100px; padding: 16px 20px; }
+}
