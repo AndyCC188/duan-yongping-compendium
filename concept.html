@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>姒傚康璇︽儏 - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html">棣栭〉</a></li>
+      <li><a href="concepts.html">姒傚康</a></li>
+      <li><a href="timeline.html">鏃堕棿绾?/a></li>
+      <li><a href="graph.html">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="article-content" id="conceptDetail">
+        <p style="text-align:center;color:var(--text-muted);padding:60px 0;">鍔犺浇涓?..</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var params = new URLSearchParams(window.location.search);
+  var conceptId = params.get("id");
+  var container = document.getElementById("conceptDetail");
+  if (!conceptId || typeof CONCEPTS === "undefined") {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:60px 0;">鏈壘鍒拌姒傚康銆?/p>';
+    return;
+  }
+  var concept = CONCEPTS.find(function(c) { return c.id === conceptId; });
+  if (!concept) {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:60px 0;">鏈壘鍒拌姒傚康銆?/p>';
+    return;
+  }
+  document.title = concept.name + " - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?;
+  var html = '<div class="breadcrumb"><a href="index.html">棣栭〉</a> / <a href="concepts.html">姒傚康</a> / ' + concept.name + '</div>';
+  html += '<h1 style="font-family:var(--font-serif);font-size:28px;color:var(--primary);margin-bottom:4px;">' + concept.name + '</h1>';
+  html += '<p style="color:var(--text-muted);font-size:14px;margin-bottom:8px;">' + concept.english + '</p>';
+  html += '<span class="category-tag" style="margin-bottom:24px;display:inline-block;">' + concept.categoryName + '</span>';
+  html += '<div style="background:var(--bg-dark);padding:20px;border-radius:var(--radius-lg);margin-bottom:32px;"><p style="font-size:16px;line-height:1.8;margin:0;">' + concept.description + '</p></div>';
+  if (concept.quotes && concept.quotes.length > 0) {
+    html += '<h2>鍘熸枃寮曠敤</h2>';
+    concept.quotes.forEach(function(q) {
+      html += '<div class="quote-card"><div class="quote-text">"' + q.text + '"</div><div class="quote-source">鈥斺€?' + q.source + '锛? + q.year + '锛?/div></div>';
+    });
+  }
+  if (concept.timeline && concept.timeline.length > 0) {
+    html += '<h2 style="margin-top:32px;">鎬濇兂婕旇繘</h2><div class="timeline">';
+    concept.timeline.forEach(function(t) {
+      html += '<div class="timeline-item"><div class="timeline-year">' + t.year + '</div><div class="timeline-content">' + t.event + '</div></div>';
+    });
+    html += '</div>';
+  }
+  if (concept.related && concept.related.length > 0) {
+    html += '<h2 style="margin-top:32px;">鍏宠仈姒傚康</h2><div class="concept-grid">';
+    concept.related.forEach(function(rid) {
+      var related = CONCEPTS.find(function(c) { return c.id === rid; });
+      if (related) {
+        html += '<a href="concept.html?id=' + related.id + '" class="concept-card"><h3>' + related.name + '</h3><p>' + related.summary + '</p><span class="category-tag">' + related.categoryName + '</span></a>';
+      }
+    });
+    html += '</div>';
+  }
+  container.innerHTML = html;
+});
+</script>
+</body>
+</html>
