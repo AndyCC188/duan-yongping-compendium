@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鏍稿績姒傚康 - 娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html">棣栭〉</a></li>
+      <li><a href="concepts.html" class="active">姒傚康</a></li>
+      <li><a href="timeline.html">鏃堕棿绾?/a></li>
+      <li><a href="graph.html">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">鏍稿績姒傚康</h2>
+      <p class="section-desc">娈垫案骞充环鍊兼姇璧勬€濇兂鐨?5涓牳蹇冩蹇?/p>
+      <div class="search-box"><input type="text" id="searchInput" placeholder="鎼滅储姒傚康..." /></div>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-category="all">鍏ㄩ儴</button>
+        <button class="filter-btn" data-category="core">鏍稿績鐞嗗康</button>
+        <button class="filter-btn" data-category="investing">鎶曡祫鏂规硶</button>
+        <button class="filter-btn" data-category="business">鍟嗕笟鎬濈淮</button>
+        <button class="filter-btn" data-category="life">浜虹敓鍝插</button>
+      </div>
+      <div class="concept-grid" id="conceptGrid"></div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var activeCategory = "all";
+  function getUrlParam(name) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+  function renderConcepts(filter, search) {
+    filter = filter || "all";
+    search = search || "";
+    var grid = document.getElementById("conceptGrid");
+    if (!grid || typeof CONCEPTS === "undefined") return;
+    var filtered = CONCEPTS;
+    if (filter !== "all") filtered = filtered.filter(function(c) { return c.category === filter; });
+    if (search) {
+      var s = search.toLowerCase();
+      filtered = filtered.filter(function(c) {
+        return c.name.toLowerCase().indexOf(s) >= 0 || c.summary.toLowerCase().indexOf(s) >= 0 || c.english.toLowerCase().indexOf(s) >= 0;
+      });
+    }
+    grid.innerHTML = filtered.map(function(c) {
+      return '<a href="concept.html?id=' + c.id + '" class="concept-card"><h3>' + c.name + '</h3><p style="font-size:12px;color:var(--text-muted);margin-bottom:4px;">' + c.english + '</p><p>' + c.summary + '</p><span class="category-tag">' + c.categoryName + '</span></a>';
+    }).join("") || '<p class="text-center" style="grid-column:1/-1;color:var(--text-muted);">娌℃湁鎵惧埌鍖归厤鐨勬蹇?/p>';
+  }
+  document.querySelectorAll(".filter-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active"); });
+      this.classList.add("active");
+      activeCategory = this.getAttribute("data-category");
+      renderConcepts(activeCategory, document.getElementById("searchInput").value);
+    });
+  });
+  document.getElementById("searchInput").addEventListener("input", function() {
+    renderConcepts(activeCategory, this.value);
+  });
+  var catFromUrl = getUrlParam("category");
+  if (catFromUrl) {
+    var btn = document.querySelector('.filter-btn[data-category="' + catFromUrl + '"]');
+    if (btn) btn.click();
+  } else {
+    renderConcepts();
+  }
+});
+</script>
+</body>
+</html>
