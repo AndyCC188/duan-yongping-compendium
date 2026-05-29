@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鏃堕棿绾?- 娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html">棣栭〉</a></li>
+      <li><a href="concepts.html">姒傚康</a></li>
+      <li><a href="timeline.html" class="active">鏃堕棿绾?/a></li>
+      <li><a href="graph.html">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">娈垫案骞充环鍊兼姇璧勬椂闂寸嚎</h2>
+      <p class="section-desc">浠?989骞村垱涓氬埌浠峰€兼姇璧勫厛椹憋紝澶т簨骞磋〃涓€瑙?/p>
+      <div class="filter-bar" id="timelineFilter">
+        <button class="filter-btn active" data-type="all">鍏ㄩ儴</button>
+        <button class="filter-btn" data-type="鍒涗笟">鍒涗笟</button>
+        <button class="filter-btn" data-type="鎶曡祫">鎶曡祫</button>
+        <button class="filter-btn" data-type="婕旇">婕旇</button>
+        <button class="filter-btn" data-type="鎱堝杽">鎱堝杽</button>
+      </div>
+      <div class="timeline" id="timelineContainer" style="max-width:700px;margin:0 auto;"></div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function renderTimeline(filter) {
+    filter = filter || "all";
+    var container = document.getElementById("timelineContainer");
+    if (!container || typeof TIMELINE_EVENTS === "undefined") return;
+    var events = TIMELINE_EVENTS;
+    if (filter !== "all") events = events.filter(function(e) { return e.type === filter; });
+    container.innerHTML = events.map(function(e) {
+      return '<div class="timeline-item"><div class="timeline-year">' + e.year + ' <span class="category-tag" style="margin-left:8px;">' + e.type + '</span></div><div class="timeline-content"><strong>' + e.title + '</strong></div><div class="timeline-content">' + e.description + '</div></div>';
+    }).join("");
+  }
+  document.querySelectorAll("#timelineFilter .filter-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      document.querySelectorAll("#timelineFilter .filter-btn").forEach(function(b) { b.classList.remove("active"); });
+      this.classList.add("active");
+      renderTimeline(this.getAttribute("data-type"));
+    });
+  });
+  renderTimeline();
+});
+</script>
+</body>
+</html>
