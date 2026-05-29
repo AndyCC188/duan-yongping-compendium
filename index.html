@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>娈垫案骞充环鍊兼姇璧勬€濇兂搴?/title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">娈垫案骞充环鍊兼姇璧勬€濇兂搴?/a>
+    <button class="nav-toggle" aria-label="鑿滃崟">鈽?/button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">棣栭〉</a></li>
+      <li><a href="concepts.html">姒傚康</a></li>
+      <li><a href="timeline.html">鏃堕棿绾?/a></li>
+      <li><a href="graph.html">鐭ヨ瘑鍥捐氨</a></li>
+      <li><a href="articles.html">鏂囩珷</a></li>
+      <li><a href="about.html">鍏充簬</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <section class="hero">
+    <h1>娈垫案骞?span class="accent">浠峰€兼姇璧?/span>鎬濇兂搴?/h1>
+    <p class="subtitle">绯荤粺鏁寸悊涓浗浠峰€兼姇璧勫厛椹辨姘稿钩鐨勬姇璧勭悊蹇点€佸晢涓氭櫤鎱у拰浜虹敓鍝插銆傝嚧鏁ぇ閬撴棤褰㈡垜鏈夊瀷銆?/p>
+    <div class="hero-actions">
+      <a href="concepts.html" class="btn btn-primary">娴忚鏍稿績姒傚康</a>
+      <a href="timeline.html" class="btn btn-outline">鏌ョ湅鏃堕棿绾?/a>
+      <a href="graph.html" class="btn btn-outline">鎺㈢储鐭ヨ瘑鍥捐氨</a>
+    </div>
+  </section>
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">鏍稿績姒傚康</div></div>
+    <div class="stat-item"><div class="stat-value">60+</div><div class="stat-label">鍘熸枃寮曠敤</div></div>
+    <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">娣卞害鏂囩珷</div></div>
+    <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">鎬濇兂缁村害</div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">鎬濇兂浣撶郴</h2>
+      <p class="section-desc">娈垫案骞充环鍊兼姇璧勬€濇兂鍒嗕负鍥涘ぇ鏉垮潡锛屼粠鏍稿績鐞嗗康鍒颁汉鐢熷摬瀛?/p>
+      <div class="category-grid" id="categoryGrid"></div>
+    </div>
+  </section>
+  <section class="section" style="background: var(--bg-dark);">
+    <div class="container">
+      <h2 class="section-title">绮鹃€夋蹇?/h2>
+      <p class="section-desc">浠?5涓牳蹇冩蹇典腑绮鹃€夛紝鐐瑰嚮鏌ョ湅瀹屾暣鍐呭</p>
+      <div class="concept-grid" id="featuredConcepts"></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container text-center">
+      <h2 class="section-title">娣卞害鏂囩珷</h2>
+      <p class="section-desc">娣卞叆瑙ｈ娈垫案骞崇殑鎶曡祫涔嬮亾</p>
+      <div style="max-width: 700px; margin: 0 auto; text-align: left;" id="homeArticles"></div>
+      <a href="articles.html" class="btn btn-primary mt-20">鏌ョ湅鍏ㄩ儴鏂囩珷</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <p>娈垫案骞充环鍊兼姇璧勬€濇兂搴?鈥?鑷存暚澶ч亾鏃犲舰鎴戞湁鍨?/p>
+    <p style="margin-top: 8px;">鏈珯涓洪潪鍟嗕笟椤圭洰锛屽唴瀹瑰熀浜庡叕寮€璧勬枡鏁寸悊锛屼粎渚涘涔犲弬鑰冦€?/p>
+    <p style="margin-top: 8px;"><a href="https://github.com">GitHub</a> 路 2024</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/router.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var cg = document.getElementById("categoryGrid");
+  if (cg && typeof CATEGORIES !== "undefined") {
+    cg.innerHTML = CATEGORIES.map(function(cat) {
+      return '<a href="concepts.html?category=' + cat.id + '" class="category-card"><div class="category-icon">' + cat.icon + '</div><div class="category-name">' + cat.name + '</div><div>' + cat.description + '</div><div class="category-count">' + cat.count + ' 涓蹇?/div></a>';
+    }).join("");
+  }
+  var fg = document.getElementById("featuredConcepts");
+  if (fg && typeof CONCEPTS !== "undefined") {
+    var featured = CONCEPTS.filter(function(c) { return ["right-business","compounding","stop-doing","life-philosophy","management","margin-of-safety"].indexOf(c.id) >= 0; });
+    fg.innerHTML = featured.map(function(c) {
+      return '<a href="concept.html?id=' + c.id + '" class="concept-card"><h3>' + c.name + '</h3><p>' + c.summary + '</p><span class="category-tag">' + c.categoryName + '</span></a>';
+    }).join("");
+  }
+  var ha = document.getElementById("homeArticles");
+  if (ha && typeof ARTICLES !== "undefined") {
+    ha.innerHTML = ARTICLES.map(function(a) {
+      return '<div class="article-item"><a href="article.html?id=' + a.id + '"><h3>' + a.title + '</h3></a><div class="meta">' + a.date + ' 路 ' + a.author + '</div><p>' + a.summary + '</p></div>';
+    }).join("");
+  }
+});
+</script>
+</body>
+</html>
